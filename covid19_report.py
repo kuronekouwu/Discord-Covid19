@@ -4,7 +4,7 @@ import json
 from discord.ext import commands
 
 TOKEN = '' #เอา Token Bot มาใช้งานได้เล๊ยย!!
-PREFIX = '?>' #คำนำหน้า
+PREFIX = '>>' #คำนำหน้า
 
 bot = commands.Bot(command_prefix=PREFIX)
 
