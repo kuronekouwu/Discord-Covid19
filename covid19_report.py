@@ -12,6 +12,10 @@ bot = commands.Bot(command_prefix=PREFIX)
 async def on_ready() :
 	print(f"Bot {bot.user.name} has started!")
 
+@bot.event
+async def on_message(message) :
+	await bot.process_commands(message)
+
 async def get_data_url(url) :
 	async with aiohttp.ClientSession() as session :
 		html = await fetch(session, url)
