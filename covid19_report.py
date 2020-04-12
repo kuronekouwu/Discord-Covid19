@@ -28,7 +28,7 @@ async def fetch(session, url) :
 
 @bot.command()
 async def covid19(ctx) :
-	thai = await get_data_url('https://covid19.th-stat.com/api/open/timeline')
+	thai = await get_data_url('https://covid19.th-stat.com/api/open/today')
 	thai = json.loads(thai)
 
 	e = discord.Embed(
@@ -37,10 +37,10 @@ async def covid19(ctx) :
 		color=0xf2466c
 	)
 
-	e.add_field(name=':thermometer_face: ผู้ป่วยสะสม',value=f"{thai['Data'][-1]['Confirmed']} คน")
-	e.add_field(name=':mask: ผู้ป่วยรายใหม่',value=f"{thai['Data'][-1]['NewConfirmed']} คน")
-	e.add_field(name=':homes:  ผู้ป่วยรักษาหายแล้ว',value=f"{thai['Data'][-1]['Recovered']} คน")
-	e.add_field(name=':skull_crossbones: ผู้ป่วยเสียชีวิต',value=f"{thai['Data'][-1]['Deaths']} คน")
+	e.add_field(name=':thermometer_face: ผู้ป่วยสะสม',value=f"{thai['Confirmed']} คน")
+	e.add_field(name=':mask: ผู้ป่วยรายใหม่',value=f"{thai['NewConfirmed']} คน")
+	e.add_field(name=':homes:  ผู้ป่วยรักษาหายแล้ว',value=f"{thai['Recovered']} คน")
+	e.add_field(name=':skull_crossbones: ผู้ป่วยเสียชีวิต',value=f"{thai['Deaths']} คน")
 	e.set_footer(text=f'''ข้อมูลจาก {thai["Source"]}''')
 
 	await ctx.send(embed=e)
